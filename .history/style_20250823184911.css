@@ -1,0 +1,90 @@
+/* ===== HEADER I NAVIGACIJA (sa centralnim menijem) ===== */
+.main-header {
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.main-nav {
+    display: grid; /* Koristimo Grid za savršeno poravnanje */
+    grid-template-columns: 1fr auto 1fr; /* Tri kolone: leva, auto, desna */
+    align-items: center;
+    width: 100%;
+}
+
+.nav-center ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Centriramo linkove unutar svog dela */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-right {
+    justify-self: end; /* Poravnavamo desni element skroz udesno */
+}
+
+/* Stilovi za linkove u navigaciji ostaju isti */
+.main-nav ul li {
+    margin: 0 20px; /* Prilagođen razmak */
+}
+
+.main-nav ul a {
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    padding: 5px 0;
+}
+
+.main-nav ul a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-out;
+}
+
+.main-nav ul a:hover::after {
+    width: 100%;
+}
+
+/* Stilovi za header dugme */
+.dugme-header {
+    padding: 10px 20px;
+    font-size: 0.9em;
+}
+
+/* Stilovi za logo ostaju isti */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.logo-img {
+    width: 60px; /* Malo smo smanjili logo da stane lepše */
+    height: 60px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0003;
+    background: #fff;
+    object-fit: cover;
+}
+.logo-title {
+    font-size: 1.5em; 
+    color: var(--primary-color);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #0005;
+}

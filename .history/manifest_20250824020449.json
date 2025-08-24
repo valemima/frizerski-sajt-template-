@@ -1,0 +1,21 @@
+{
+    "name": "Frizerski Salon Elegance",
+    "short_name": "Elegance",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#F3E9DD",
+    "theme_color": "#A67B5B",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "icons/android-chrome-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/android-chrome-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

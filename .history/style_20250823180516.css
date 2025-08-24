@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frizerski Salon Nova</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <!-- Zameni tekst sa <img src="logo.png" alt="Logo"> ako imaš logo -->
+                <span>LOGO</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#usluge">Usluge</a></li>
+                    <li><a href="#tim">Naš tim</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container main-center">
+            <section class="hero">
+                <h2>Dobrodošli u Frizerski Salon Nova</h2>
+                <p>Moderan stil, profesionalna usluga i prijatna atmosfera.</p>
+                <a href="#kontakt" class="btn">Zakažite termin</a>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Frizerski Salon Nova. Sva prava zadržana.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

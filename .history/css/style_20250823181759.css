@@ -1,0 +1,150 @@
+/* Popravka headera i logo */
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px #0002;
+}
+.logo span {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #bfa46a;
+    letter-spacing: 1px;
+}
+
+/* Centriranje i boje za usluge */
+.usluge-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+    margin-top: 20px;
+}
+.usluge-lista li {
+    background: #181a1b;
+    color: #bfa46a;
+    padding: 18px 32px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    min-width: 180px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 1px solid #232323;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+header {
+    background: #181a1b;
+    color: #fff;
+    padding: 32px 0 8px 0;
+    border-bottom: 1px solid #232323;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.08em;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+nav a:hover {
+    color: #bfa46a;
+    border-bottom: 2px solid #bfa46a;
+}
+/* Header centralizacija i logo */
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #bfa46a;
+}
+nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.08em;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+nav a:hover {
+    color: #bfa46a;
+    border-bottom: 2px solid #bfa46a;
+}
+
+/* Centralizacija glavnog sadržaja */
+.main-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+.hero {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Moderni footer */
+footer {
+    background: #181a1b;
+    color: #bfa46a;
+    text-align: center;
+    padding: 16px 0;
+    border-radius: 10px 10px 0 0;
+    margin-top: 32px;
+    font-size: 1em;
+    border-top: 1px solid #232323;
+}
+<!DOCTYPE html>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container main-center">
+            <section class="hero">
+                <h2>Dobrodošli u Frizerski Salon Nova</h2>
+                <p>Moderan stil, profesionalna usluga i prijatna atmosfera.</p>
+                <a href="#kontakt" class="btn">Zakažite termin</a>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Frizerski Salon Nova. Sva prava zadržana.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frizerski Salon "Elegance" | Dobrodošli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="main-nav">
+            
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <div class="logo">
+                        <img src="https://dummyimage.com/70x70/A67B5B/fff&text=E" alt="Logo" class="logo-img">
+                        <span class="logo-title">Elegance</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <ul>
+                    <li><a href="#usluge">Usluge</a></li>
+                    <li><a href="#galerija">Galerija</a></li>
+                    <li><a href="#o-nama">O Nama</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="#kontakt" class="dugme dugme-header">Zakaži Termin</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Vaša Kosa, Naša Strast</h1>
+            <p class="hero-subtitle">Vrhunske frizerske usluge za vaš savršen izgled.</p>
+            
+            <div class="booking-box">
+                <h3>Zakažite termin</h3>
+                <form id="kalendar-forma" class="booking-form">
+                    <label for="ime">Vaše ime:</label>
+                    <input type="text" id="ime" name="ime" placeholder="Unesite ime" required>
+                    <label for="datum">Izaberite datum:</label>
+                    <input type="date" id="datum" name="datum" required>
+                    <button type="submit" class="dugme">Zakaži</button>
+                </form>
+                <div class="cancel-info">
+                    Ukoliko želite da otkažete Vaš termin, nazovite broj:<br><b>065/258-852</b>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="usluge">
+            <h2 class="section-title">Naše Usluge</h2>
+            <div class="usluge-container">
+                <div class="usluga-kartica">
+                    <img src="images/sisanje.jpg" alt="Šišanje" class="usluga-img">
+                    <div class="usluga-info">
+                        <h4>Moderno Šišanje</h4>
+                        <p>Pratimo najnovije trendove kako bismo vam pružili frizuru koja ističe vaš stil.</p>
+                    </div>
+                </div>
+                <div class="usluga-kartica">
+                    <img src="images/farbanje.jpg" alt="Farbanje" class="usluga-img">
+                    <div class="usluga-info">
+                        <h4>Profesionalno Farbanje</h4>
+                        <p>Koristimo premium boje koje neguju vašu kosu i daju joj neverovatan sjaj.</p>
+                    </div>
+                </div>
+                <div class="usluga-kartica">
+                    <img src="images/svecane-frizure.jpg" alt="Svečane frizure" class="usluga-img">
+                    <div class="usluga-info">
+                        <h4>Svečane Frizure</h4>
+                        <p>Blistajte u posebnim prilikama uz elegantne i postojane frizure po vašoj želji.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerija">
+            <h2 class="section-title">Galerija Naših Radova</h2>
+            <div class="galerija-container">
+                <div class="galerija-item"><img src="images/frizura1.jpg" alt="Frizura 1"></div>
+                <div class="galerija-item"><img src="images/frizura2.jpg" alt="Frizura 2"></div>
+                <div class="galerija-item"><img src="images/frizura3.jpg" alt="Frizura 3"></div>
+                <div class="galerija-item"><img src="images/frizura4.jpg" alt="Frizura 4"></div>
+            </div>
+        </section>
+        
+        <section id="o-nama" class="about-section">
+            <h2 class="section-title">Naša Priča</h2>
+            <p>U srcu grada, Frizerski Salon "Elegance" je više od običnog salona – to je mesto gde se umetnost i stil spajaju. Naš tim stručnjaka posvećen je pružanju personalizovane usluge i stvaranju izgleda koji volite.</p>
+        </section>
+
+        <section id="kontakt">
+            <h2 class="section-title">Kontaktirajte Nas</h2>
+            <form id="kontakt-forma">
+                <input type="text" name="ime" placeholder="Vaše Ime" required>
+                <input type="email" name="email" placeholder="Vaš Email" required>
+                <textarea name="poruka" placeholder="Vaša poruka ili pitanje..." required></textarea>
+                <button type="submit" class="dugme">Pošalji Upit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Frizerski Salon "Elegance". Sva prava zadržana.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

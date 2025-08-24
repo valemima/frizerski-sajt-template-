@@ -1,0 +1,159 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+header {
+    background: url('images/pozadina.jpg') no-repeat center center/cover, linear-gradient(90deg, #222 60%, #d4a373 100%);
+    color: #fff;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3vw;
+    min-height: 80px;
+    background: rgba(34,34,34,0.85);
+    border-bottom: 2px solid #d4a373;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #d4a373;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 700;
+    text-shadow: 0 2px 8px #0005;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+}
+nav a:hover, nav a:focus {
+    background: #d4a373;
+    color: #222;
+    box-shadow: 0 2px 8px #0002;
+}
+
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1vw;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+    nav ul li {
+        width: 100%;
+    }
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px 10px;
+        border-radius: 0;
+    }
+}
+
+.hero {
+    padding: 5rem 0;
+}
+
+.dugme {
+    background-color: #d4a373;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.usluge-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.usluga-kartica {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.galerija-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.galerija-container img {
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#kontakt-forma {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#kontakt-forma input, #kontakt-forma textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}

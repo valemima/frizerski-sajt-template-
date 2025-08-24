@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frizerski Salon "Elegant" | Dobrodošli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Frizerski Salon "Elegant"</h1>
+            </div>
+            <ul>
+                <li><a href="#usluge">Usluge</a></li>
+                <li><a href="#galerija">Galerija</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h2>Vaša Kosa, Naša Strast</h2>
+            <p>Profesionalne frizerske usluge za moderan izgled.</p>
+            <a href="#kontakt" class="dugme">Zakažite Termin</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="usluge">
+            <h3>Naše Usluge</h3>
+            <div class="usluge-container">
+                <div class="usluga-kartica">
+                    <h4>Šišanje</h4>
+                    <p>Moderno i klasično šišanje za sve tipove kose.</p>
+                </div>
+                <div class="usluga-kartica">
+                    <h4>Farbanje</h4>
+                    <p>Koristimo najkvalitetnije farbe za savršenu boju.</p>
+                </div>
+                <div class="usluga-kartica">
+                    <h4>Svečane Frizure</h4>
+                    <p>Elegantne frizure za sve vaše posebne prilike.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerija">
+            <h3>Galerija Naših Radova</h3>
+            <div class="galerija-container">
+                <img src="images/frizura1.jpg" alt="Frizura 1">
+                <img src="images/frizura2.jpg" alt="Frizura 2">
+                <img src="images/frizura3.jpg" alt="Frizura 3">
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <h3>Kontaktirajte Nas</h3>
+            <form id="kontakt-forma">
+                <input type="text" name="ime" placeholder="Vaše Ime" required>
+                <input type="email" name="email" placeholder="Vaš Email" required>
+                <textarea name="poruka" placeholder="Vaša Poruka" required></textarea>
+                <button type="submit" class="dugme">Pošalji</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Frizerski Salon "Elegant". Sva prava zadržana.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
