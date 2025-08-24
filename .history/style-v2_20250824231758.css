@@ -552,7 +552,6 @@ footer {
 
     .galerija-container { grid-template-columns: 1fr; }
     .usluga-kartica { width: 100%; max-width: 380px; }
-    
     /* ===== Ispravka pozicije strelice za vrh na mobilnom ===== */
     .idi-na-vrh {
         left: 20px; /* Prebacujemo je levo */
