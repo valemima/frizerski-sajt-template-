@@ -11,19 +11,9 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// PRELOADER
-const preloader = document.querySelector('.preloader');
-window.addEventListener('load', () => {
-    preloader.style.opacity = '0';
-    setTimeout(() => {
-        preloader.style.display = 'none';
-    }, 500);
-});
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Handler za FORMU ZA ZAKAZIVANJE
+    // === Handler za FORMU ZA ZAKAZIVANJE (u hero sekciji) ===
     const kalendarForma = document.getElementById('kalendar-forma');
     if (kalendarForma) {
         kalendarForma.addEventListener('submit', function(event) {
@@ -40,17 +30,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Handler za KONTAKT FORMU
+    // === Handler za KONTAKT FORMU (na dnu stranice) ===
     const kontaktForma = document.getElementById('kontakt-forma');
     if (kontaktForma) {
         kontaktForma.addEventListener('submit', function(event) {
             event.preventDefault();
+            // U pravom projektu, ovde bi se koristio Formspree.io
+            // <form action="https://formspree.io/f/VAŠ_KOD" method="POST">
             alert('Hvala na poruci! Uskoro ćemo Vas kontaktirati.');
             kontaktForma.reset();
         });
     }
 
-    // Kod za HAMBURGER MENI
+    // === Kod za HAMBURGER MENI ===
     const hamburger = document.getElementById('hamburger-meni');
     const navMeni = document.querySelector('.nav-center');
     const links = document.querySelectorAll('.nav-center a');
@@ -66,18 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 navMeni.classList.remove('active');
                 hamburger.classList.remove('active');
             });
-        });
-    }
-
-    // Kod za STRELICU ZA VRH
-    const idiNaVrhDugme = document.querySelector('.idi-na-vrh');
-    if (idiNaVrhDugme) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                idiNaVrhDugme.classList.add('aktivan');
-            } else {
-                idiNaVrhDugme.classList.remove('aktivan');
-            }
         });
     }
 

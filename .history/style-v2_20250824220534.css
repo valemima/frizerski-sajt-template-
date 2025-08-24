@@ -414,7 +414,26 @@ footer {
     color: var(--primary-color);
 }
 
+/* ===== ANIMACIJE ===== */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================================================= */
+/* ===== RESPONSIVNI DEO (Finalna verzija) ===== */
+/* ======================================================= */
+
+/* =================================== */
 /* ===== STILOVI ZA PRELOADER I STRELICU ===== */
+/* =================================== */
+
+/* --- Stil za Preloader --- */
 .preloader {
     position: fixed;
     top: 0;
@@ -438,6 +457,13 @@ footer {
     animation: spin 1s linear infinite;
 }
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Stil za Strelicu za Vrh --- */
 .idi-na-vrh {
     position: fixed;
     bottom: 20px;
@@ -453,45 +479,23 @@ footer {
     font-size: 1.5rem;
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    /* Inicijalno sakrivena */
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.3s ease;
 }
 
+/* Stil kada je strelica vidljiva */
 .idi-na-vrh.aktivan {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* ===== ANIMACIJE ===== */
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* ======================================================= */
-/* ===== RESPONSIVNI DEO (Finalna verzija) ===== */
-/* ======================================================= */
-
 @media (max-width: 992px) {
     .main-header {
         padding: 10px 20px;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
     }
     
     .main-nav {
