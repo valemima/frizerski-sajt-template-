@@ -1,6 +1,159 @@
-/* ======================================= */
-/* ===== OSNOVA (UVEK MORA BITI NA VRHU) ===== */
-/* ======================================= */
+/* =================================== */
+/* ===== STILOVI ZA RECENZIJE ===== */
+/* =================================== */
+
+#recenzije {
+    background-color: var(--light-color);
+}
+
+.recenzije-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.recenzija-kartica {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.zvezdice {
+    color: #FFC107;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.recenzija-tekst {
+    font-style: italic;
+    color: #555;
+    flex-grow: 1;
+    line-height: 1.6;
+}
+
+.recenzija-autor {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+/* =================================== */
+/* ===== STILOVI ZA AKCIJE ===== */
+/* =================================== */
+
+#akcije {
+    background-color: var(--light-color);
+}
+
+.akcije-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tri kolone na desktopu */
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.akcija-kartica {
+    background-color: var(--secondary-color);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.akcija-kartica:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.akcija-ikonica {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.akcija-naslov {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.akcija-opis {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.dugme-akcija {
+    background-color: transparent;
+    color: var(--primary-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.dugme-akcija:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+/* =================================== */
+/* ===== STILOVI ZA RECENZIJE ===== */
+/* =================================== */
+
+#recenzije {
+    background-color: var(--secondary-color);
+}
+
+.recenzije-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tri kolone na desktopu */
+    gap: 2rem;
+}
+
+.recenzija-kartica {
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.zvezdice {
+    color: #FFC107; /* Zlatno-žuta boja za zvezdice */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.recenzija-tekst {
+    font-style: italic;
+    color: #555;
+    flex-grow: 1; /* Osigurava da tekst zauzme prostor i da autor bude na dnu */
+    line-height: 1.6;
+}
+
+.recenzija-autor {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+/* ===== OSNOVNI STILOVI I VARIJABLE ===== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Lato:wght@400;700&display=swap');
 
 :root {
@@ -26,7 +179,7 @@ body {
 
 main {
     padding: 0;
-    overflow: clip;
+    overflow: clip; /* ISPRAVKA ZA STICKY HEADER */
 }
 
 section {
@@ -42,12 +195,7 @@ section {
     color: var(--primary-color);
 }
 
-
-/* ======================================= */
-/* ===== KOMPONENTE SAJTA ===== */
-/* ======================================= */
-
-/* --- HEADER I NAVIGACIJA --- */
+/* ===== HEADER I NAVIGACIJA ===== */
 .main-header {
     background-color: var(--header-bg);
     backdrop-filter: blur(10px);
@@ -140,7 +288,7 @@ section {
     left: 0;
 }
 
-/* --- HERO SEKCIJA --- */
+/* ===== HERO SEKCIJA ===== */
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/pozadina.jpg') no-repeat center center/cover;
     min-height: 90vh;
@@ -166,7 +314,6 @@ section {
     animation: fadeInUp 1s ease-out;
 }
 
-/* --- BLOK ZA ZAKAZIVANJE --- */
 .booking-box {
     margin-top: 32px;
     max-width: 400px;
@@ -220,7 +367,7 @@ section {
     line-height: 1.5;
 }
 
-/* --- DUGME (GENERALNO) --- */
+/* ===== DUGME (GENERALNO) ===== */
 .dugme {
     background-color: var(--primary-color);
     color: var(--light-color);
@@ -240,69 +387,7 @@ section {
     transform: translateY(-3px);
 }
 
-/* --- SEKCIJA AKCIJE --- */
-#akcije {
-    background-color: var(--light-color);
-}
-
-.akcije-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.akcija-kartica {
-    background-color: var(--secondary-color);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.akcija-kartica:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.akcija-ikonica {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.akcija-naslov {
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-.akcija-opis {
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 2rem;
-}
-
-.dugme-akcija {
-    background-color: transparent;
-    color: var(--primary-color);
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    border: 2px solid var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-.dugme-akcija:hover {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-}
-
-/* --- USLUGE SEKCIJA --- */
+/* ===== USLUGE SEKCIJA ===== */
 .usluge-container {
     display: flex;
     justify-content: center;
@@ -341,7 +426,7 @@ section {
     color: var(--dark-color);
 }
 
-/* --- STILOVI ZA CENOVNIK --- */
+/* ===== STILOVI ZA CENOVNIK ===== */
 #cenovnik {
     background-color: var(--light-color);
 }
@@ -391,7 +476,7 @@ section {
     grid-column: 1 / -1;
 }
 
-/* --- GALERIJA SEKCIJA --- */
+/* ===== GALERIJA SEKCIJA ===== */
 .galerija-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -411,11 +496,7 @@ section {
     filter: brightness(1.1);
 }
 
-/* --- O NAMA I LOKACIJA SEKCIJA --- */
-#o-nama {
-    background-color: #fff;
-}
-
+/* ===== LOKACIJA SEKCIJA (MAPA) ===== */
 #lokacija {
     background-color: var(--secondary-color);
 }
@@ -425,6 +506,8 @@ section {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+
+/* ===== O NAMA SEKCIJA ===== */
 .about-section {
     max-width: 800px;
     margin: 0 auto;
@@ -432,50 +515,7 @@ section {
     line-height: 1.8;
 }
 
-/* --- RECENZIJE SEKCIJA --- */
-#recenzije {
-    background-color: var(--secondary-color);
-}
-
-.recenzije-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.recenzija-kartica {
-    background-color: var(--light-color);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.zvezdice {
-    color: #FFC107;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.recenzija-tekst {
-    font-style: italic;
-    color: #555;
-    flex-grow: 1;
-    line-height: 1.6;
-}
-
-.recenzija-autor {
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-}
-
-/* --- KONTAKT SEKCIJA --- */
+/* ===== KONTAKT SEKCIJA ===== */
 #kontakt {
     background-color: var(--light-color);
 }
@@ -503,7 +543,7 @@ section {
     box-shadow: 0 0 5px rgba(166, 123, 91, 0.5);
 }
 
-/* --- FOOTER I POMOĆNI ELEMENTI --- */
+/* ===== FOOTER ===== */
 footer {
     background-color: var(--dark-color);
     color: var(--light-color);
@@ -512,6 +552,7 @@ footer {
     margin-top: 2rem;
 }
 
+/* ===== STILOVI ZA SOCIAL IKONICE U FOOTERU ===== */
 .social-icons {
     margin-bottom: 1rem;
 }
@@ -528,9 +569,10 @@ footer {
     color: var(--primary-color);
 }
 
+/* ===== STILOVI ZA PRELOADER I STRELICU ===== */
 .preloader {
     position: fixed;
-    inset: 0;
+    inset: 0; /* Moderniji način za top:0, left:0, width:100%, height:100% */
     background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
@@ -581,7 +623,7 @@ footer {
     transform: translateY(0);
 }
 
-/* --- ANIMACIJE --- */
+/* ===== ANIMACIJE ===== */
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -598,12 +640,22 @@ footer {
     }
 }
 
-
 /* ======================================================= */
 /* ===== RESPONSIVNI DEO (Finalna verzija) ===== */
 /* ======================================================= */
 
 @media (max-width: 992px) {
+    .recenzije-container {
+        grid-template-columns: 1fr;
+    }
+    /* ===== Prilagođavanje akcija za mobilni ===== */
+    .akcije-container {
+        grid-template-columns: 1fr; /* Jedna kolona na tabletima i telefonima */
+    }
+    /* ===== Prilagođavanje recenzija za mobilni ===== */
+    .recenzije-container {
+        grid-template-columns: 1fr; /* Jedna kolona na tabletima i telefonima */
+    }
     .main-header {
         padding: 10px 20px;
         position: sticky;
@@ -660,11 +712,6 @@ footer {
 
     .hero-title { font-size: 2.8rem; }
     .section-title { font-size: 2rem; }
-    
-    .akcije-container, .recenzije-container {
-        grid-template-columns: 1fr;
-    }
-    
     .usluge-container { flex-direction: column; align-items: center; gap: 1.5rem; }
     
     .cenovnik-container {
