@@ -1,0 +1,65 @@
+/* ===== OSNOVNI STILOVI I VARIJABLE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Lato:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #A67B5B; /* Topla, elegantna braon */
+    --secondary-color: #F3E9DD; /* Svetla bež pozadina */
+    --dark-color: #333333; /* Tamna za tekst */
+    --light-color: #FFFFFF; /* Bela */
+    --header-bg: rgba(255, 255, 255, 0.9); /* Blago providna bela */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+main {
+    padding: 0;
+    overflow: clip; /* FINALNA ISPRAVKA ZA STICKY HEADER */
+}
+
+section {
+    padding: 50px 20px;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+/* ===== HEADER I NAVIGACIJA ===== */
+.main-header {
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.main-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-center ul {
+    list-style: none;
+    display: flex
