@@ -1,20 +1,20 @@
-const CACHE_NAME = 'elegance-salon-v5'; // <-- VAŽNO: Nova verzija, v5!
+const CACHE_NAME = 'elegance-salon-v4'; // <-- NOVA VERZIJA!
 const urlsToCache = [
     '/',
-    '/index.html',
-    '/style-v2.css',
-    '/script.js',
-    '/manifest.json',
-    '/images/pozadina.jpg',
-    '/images/sisanje.jpg',
-    '/images/farbanje.jpg',
-    '/images/svecane-frizure.jpg',
-    '/images/frizura1.jpg',
-    '/images/frizura2.jpg',
-    '/images/frizura3.jpg',
-    '/images/frizura4.jpg',
-    '/icons/android-chrome-192x192.png',
-    '/icons/android-chrome-512x512.png'
+    'index.html',
+    'style-v2.css',
+    'script.js',
+    'manifest.json',
+    'images/pozadina.jpg',
+    'images/sisanje.jpg',
+    'images/farbanje.jpg',
+    'images/svecane-frizure.jpg',
+    'images/frizura1.jpg',
+    'images/frizura2.jpg',
+    'images/frizura3.jpg',
+    'images/frizura4.jpg',
+    'icons/android-chrome-192x192.png',
+    'icons/android-chrome-512x512.png'
 ];
 
 // Instalacija i keširanje
@@ -45,16 +45,10 @@ self.addEventListener('activate', event => {
     return self.clients.claim();
 });
 
-// Presretanje zahteva - sa izuzetkom za Live Server
+// Presretanje zahteva - Network falling back to cache
 self.addEventListener('fetch', event => {
-    // Ako je zahtev od Live Server-a, ignoriši ga i pusti da prođe
-    if (event.request.url.includes('socket.io')) {
-        return;
-    }
-
     event.respondWith(
         fetch(event.request).catch(() => {
-            // Ako preuzimanje sa mreže ne uspe, nađi odgovor u kešu.
             return caches.match(event.request);
         })
     );
