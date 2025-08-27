@@ -13,19 +13,12 @@ html {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: var(--secondary-color);
     color: var(--dark-color);
-}
-
-.content-wrapper {
-    flex: 1;
 }
 
 main {
@@ -96,8 +89,7 @@ section {
     padding: 5px 0;
 }
 
-/* ISPRAVKA 1: Crtica ispod linkova - samo za .nav-center */
-.nav-center ul a::after {
+.main-nav ul a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -108,7 +100,8 @@ section {
     background-color: var(--primary-color);
     transition: width 0.3s ease-out;
 }
-.nav-center ul a:hover::after {
+
+.main-nav ul a:hover::after {
     width: 100%;
 }
 
@@ -120,14 +113,6 @@ section {
 .logo { display: flex; align-items: center; gap: 16px; }
 .logo-img { width: 60px; height: 60px; border-radius: 12px; box-shadow: 0 2px 8px #0003; background: #fff; object-fit: cover; }
 .logo-title { font-size: 1.5em; color: var(--primary-color); font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; letter-spacing: 2px; text-shadow: 0 2px 8px #0005; }
-
-/* ISPRAVKA ZA LOGO LINK: Uklanja podvlačenje */
-.logo-link {
-    text-decoration: none !important;
-}
-.logo-link:hover {
-    text-decoration: none !important;
-}
 
 #hamburger-meni {
     display: none;
@@ -526,7 +511,7 @@ footer {
     color: var(--light-color);
     text-align: center;
     padding: 1.5rem 0;
-    margin-top: auto;
+    margin-top: 2rem;
 }
 
 .social-icons {
@@ -545,6 +530,7 @@ footer {
     color: var(--primary-color);
 }
 
+/* Novi stil za futer linkove */
 .footer-links {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -616,22 +602,6 @@ footer {
     transform: translateY(0);
 }
 
-/* --- Centriranje sadržaja za impresum i datenschutzerklaring */
-.legal-page-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    line-height: 1.6;
-}
-
-/* ISPRAVKA 2: Centriranje naslova na legalnim stranama */
-.content-wrapper > header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 2rem 0 2rem;
-}
-
 /* --- ANIMACIJE --- */
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
@@ -671,24 +641,8 @@ footer {
     
     .logo-title { display: none; }
     .nav-left { justify-self: start; }
-    #hamburger-meni { 
-        display: block; 
-        justify-self: center; 
-    }
-    .nav-right { 
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        justify-self: unset;
-    }
-
-    .dugme-header {
-        padding: 15px 25px;
-        border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        animation: pulse 2s infinite;
-    }
+    #hamburger-meni { display: block; justify-self: center; }
+    .nav-right { justify-self: end; }
 
     .nav-center {
         display: flex;
@@ -745,11 +699,5 @@ footer {
     .idi-na-vrh {
         left: 20px;
         right: auto;
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
     }
 }

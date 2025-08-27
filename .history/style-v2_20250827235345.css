@@ -96,8 +96,7 @@ section {
     padding: 5px 0;
 }
 
-/* ISPRAVKA 1: Crtica ispod linkova - samo za .nav-center */
-.nav-center ul a::after {
+.main-nav ul a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -108,7 +107,8 @@ section {
     background-color: var(--primary-color);
     transition: width 0.3s ease-out;
 }
-.nav-center ul a:hover::after {
+
+.main-nav ul a:hover::after {
     width: 100%;
 }
 
@@ -120,14 +120,6 @@ section {
 .logo { display: flex; align-items: center; gap: 16px; }
 .logo-img { width: 60px; height: 60px; border-radius: 12px; box-shadow: 0 2px 8px #0003; background: #fff; object-fit: cover; }
 .logo-title { font-size: 1.5em; color: var(--primary-color); font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; letter-spacing: 2px; text-shadow: 0 2px 8px #0005; }
-
-/* ISPRAVKA ZA LOGO LINK: Uklanja podvlačenje */
-.logo-link {
-    text-decoration: none !important;
-}
-.logo-link:hover {
-    text-decoration: none !important;
-}
 
 #hamburger-meni {
     display: none;
@@ -624,14 +616,6 @@ footer {
     line-height: 1.6;
 }
 
-/* ISPRAVKA 2: Centriranje naslova na legalnim stranama */
-.content-wrapper > header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 2rem 0 2rem;
-}
-
 /* --- ANIMACIJE --- */
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
@@ -752,4 +736,5 @@ footer {
         50% { transform: scale(1.05); }
         100% { transform: scale(1); }
     }
+
 }

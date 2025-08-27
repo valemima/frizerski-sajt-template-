@@ -120,13 +120,18 @@ section {
 .logo { display: flex; align-items: center; gap: 16px; }
 .logo-img { width: 60px; height: 60px; border-radius: 12px; box-shadow: 0 2px 8px #0003; background: #fff; object-fit: cover; }
 .logo-title { font-size: 1.5em; color: var(--primary-color); font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; letter-spacing: 2px; text-shadow: 0 2px 8px #0005; }
-
-/* ISPRAVKA ZA LOGO LINK: Uklanja podvlačenje */
-.logo-link {
-    text-decoration: none !important;
+.logo-title { 
+    font-size: 1.5em; 
+    color: var(--primary-color); 
+    font-family: 'Segoe UI', Arial, sans-serif; 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+    text-shadow: 0 2px 8px #0005; 
 }
-.logo-link:hover {
-    text-decoration: none !important;
+
+/* ISPRAVKA ZA LOGO: Uklanja ::after element potpuno za logo link */
+.logo-link::after {
+    all: unset !important;
 }
 
 #hamburger-meni {
