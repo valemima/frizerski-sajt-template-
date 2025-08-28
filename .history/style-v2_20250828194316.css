@@ -154,7 +154,7 @@ section {
 
 /* --- HERO SEKCIJA --- */
 .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/pozadina.webp') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('images/pozadina.webp') no-repeat center center/cover;
     min-height: 90vh;
     display: flex;
     justify-content: center;
@@ -165,7 +165,7 @@ section {
 }
 @supports not (background-image: url("images/pozadina.webp")) {
     .hero-section {
-        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/pozadina.jpg') no-repeat center center/cover;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/pozadina.jpg') no-repeat center center/cover;
     }
 }
 
