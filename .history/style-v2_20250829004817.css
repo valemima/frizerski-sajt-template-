@@ -268,6 +268,7 @@ section {
     gap: 2rem;
     max-width: 1100px;
     margin: 0 auto;
+    align-items: stretch; /* NOVO: Sve kartice iste visine */
 }
 
 .akcija-kartica {
@@ -277,6 +278,10 @@ section {
     padding: 2rem;
     text-align: center;
     transition: all 0.3s ease;
+    display: flex;              /* NOVO: Flex layout */
+    flex-direction: column;     /* NOVO: Vertikalno */
+    justify-content: flex-start;/* NOVO: Početak */
+    height: 100%;               /* NOVO: Ispuni visinu grida */
 }
 
 .akcija-kartica:hover {
@@ -301,6 +306,7 @@ section {
     line-height: 1.6;
     color: #555;
     margin-bottom: 2rem;
+    /* flex-grow: 1;  uklonjeno */
 }
 
 .dugme-akcija {
@@ -312,26 +318,12 @@ section {
     font-weight: bold;
     border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
+    /* margin-top: auto;  uklonjeno */
 }
 
 .dugme-akcija:hover {
     background-color: var(--primary-color);
     color: var(--light-color);
-}
-
-/* SAMO za Studentski Popust - dugme u ravni sa ostalima */
-.akcije-container .akcija-kartica:first-child {
-    display: flex;
-    flex-direction: column;
-}
-
-.akcije-container .akcija-kartica:first-child .akcija-opis {
-    flex-grow: 1;
-}
-
-.akcije-container .akcija-kartica:first-child .dugme-akcija {
-    margin-top: auto;
-    align-self: center;
 }
 
 /* --- USLUGE SEKCIJA --- */

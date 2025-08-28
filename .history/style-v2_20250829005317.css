@@ -258,49 +258,36 @@ section {
 }
 
 /* --- SEKCIJA AKCIJE --- */
-#akcije {
-    background-color: var(--light-color);
-}
-
-.akcije-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
 .akcija-kartica {
-    background-color: var(--secondary-color);
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.akcija-kartica:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.akcija-ikonica {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.akcija-naslov {
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem; /* Smanjen padding */
 }
 
 .akcija-opis {
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 2rem;
+    flex-grow: 1;
+    margin-bottom: 1.5rem; /* Smanjen margin */
+}
+
+.dugme-akcija {
+    margin-top: auto;
+    align-self: center;
+    white-space: nowrap;
+    padding: 8px 20px; /* Prilagođen padding */
+}
+
+/* Responsive dizajn */
+@media (max-width: 992px) {
+    .akcije-container {
+        grid-template-columns: repeat(2, 1fr); /* Dve kolone na tabletima */
+    }
+}
+
+@media (max-width: 576px) {
+    .akcije-container {
+        grid-template-columns: 1fr; /* Jedna kolona na mobilnim */
+    }
 }
 
 .dugme-akcija {
@@ -317,21 +304,6 @@ section {
 .dugme-akcija:hover {
     background-color: var(--primary-color);
     color: var(--light-color);
-}
-
-/* SAMO za Studentski Popust - dugme u ravni sa ostalima */
-.akcije-container .akcija-kartica:first-child {
-    display: flex;
-    flex-direction: column;
-}
-
-.akcije-container .akcija-kartica:first-child .akcija-opis {
-    flex-grow: 1;
-}
-
-.akcije-container .akcija-kartica:first-child .dugme-akcija {
-    margin-top: auto;
-    align-self: center;
 }
 
 /* --- USLUGE SEKCIJA --- */

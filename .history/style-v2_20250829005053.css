@@ -258,8 +258,11 @@ section {
 }
 
 /* --- SEKCIJA AKCIJE --- */
+/* --- SEKCIJA AKCIJE --- */
 #akcije {
     background-color: var(--light-color);
+    padding-bottom: 60px; /* Dodat razmak ispod sekcije */
+    padding-top: 60px;    /* Dodat razmak iznad sekcije */
 }
 
 .akcije-container {
@@ -268,6 +271,7 @@ section {
     gap: 2rem;
     max-width: 1100px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 .akcija-kartica {
@@ -277,30 +281,16 @@ section {
     padding: 2rem;
     text-align: center;
     transition: all 0.3s ease;
-}
-
-.akcija-kartica:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.akcija-ikonica {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.akcija-naslov {
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .akcija-opis {
     line-height: 1.6;
     color: #555;
     margin-bottom: 2rem;
+    flex-grow: 1; /* Gura dugme na dno kartice */
 }
 
 .dugme-akcija {
@@ -312,6 +302,7 @@ section {
     font-weight: bold;
     border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
+    margin-top: auto; /* Uvek na dnu kartice */
 }
 
 .dugme-akcija:hover {
@@ -319,19 +310,11 @@ section {
     color: var(--light-color);
 }
 
-/* SAMO za Studentski Popust - dugme u ravni sa ostalima */
-.akcije-container .akcija-kartica:first-child {
-    display: flex;
-    flex-direction: column;
-}
-
-.akcije-container .akcija-kartica:first-child .akcija-opis {
-    flex-grow: 1;
-}
-
-.akcije-container .akcija-kartica:first-child .dugme-akcija {
-    margin-top: auto;
-    align-self: center;
+/* --- USLUGE SEKCIJA --- */
+#usluge {
+    background-color: var(--secondary-color);
+    padding-top: 60px;   /* Dodat razmak iznad sekcije */
+    padding-bottom: 60px;/* Dodat razmak ispod sekcije */
 }
 
 /* --- USLUGE SEKCIJA --- */

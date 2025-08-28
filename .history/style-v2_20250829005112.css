@@ -319,21 +319,6 @@ section {
     color: var(--light-color);
 }
 
-/* SAMO za Studentski Popust - dugme u ravni sa ostalima */
-.akcije-container .akcija-kartica:first-child {
-    display: flex;
-    flex-direction: column;
-}
-
-.akcije-container .akcija-kartica:first-child .akcija-opis {
-    flex-grow: 1;
-}
-
-.akcije-container .akcija-kartica:first-child .dugme-akcija {
-    margin-top: auto;
-    align-self: center;
-}
-
 /* --- USLUGE SEKCIJA --- */
 .usluge-container {
     display: flex;
