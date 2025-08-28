@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frizerski Salon Elegance | Šišanje i Farbanje u Beogradu</title>
+    <meta name="description" content="Profesionalne frizerske usluge u Beogradu. Nudimo moderno šišanje, farbanje, svečane frizure i još mnogo toga. Zakažite vaš termin u salonu Elegance!">
+    
+    <link rel="stylesheet" href="style-v2.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* KALENDAR CSS - možeš prebaciti u svoj CSS fajl po želji */
+        .calendar-widget {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .calendar-header {
+            padding: 20px;
+            background: #4299e1;
+            color: white;
+            text-align: center;
+        }
+        .calendar-header h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        .calendar-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .info-panel {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            background: white;
+            border-right: 1px solid #eaeaea;
+        }
+        .booking-panel {
+            flex: 1.5;
+            min-width: 300px;
+            padding: 20px;
+            background: #f9fafb;
+        }
+        .organizer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        .meeting-info {
+            margin: 15px 0;
+            padding: 12px;
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .duration, .location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        i {
+            margin-right: 10px;
+            color: #718096;
+        }
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .calendar th {
+            padding: 10px;
+            text-align: center;
+            color: #718096;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .calendar td {
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.2s;
+            font-size: 14px;
+        }
+        .calendar td:hover {
+            background: #edf2f7;
+        }
+        .selected {
+            background: #4299e1;
+            color: white;
+        }
+        .selected:hover {
+            background: #3182ce !important;
+        }
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            background: #edf2f7;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .time-slot:hover {
+            background: #e2e8f0;
+        }
+        .time-slot.selected {
+            background: #4299e1;
+            color: white;
+        }
+        .time-zone {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .divider {
+            height: 1px;
+            background: #eaeaea;
+            margin: 20px 0;
+        }
+        .confirm-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 15px;
+        }
+        .confirm-btn:hover {
+            background: #3182ce;
+        }
+        .confirm-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+        }
+        .other-month {
+            color: #cbd5e0;
+        }
+        .current-day {
+            border: 2px solid #4299e1;
+        }
+        .month-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #4a5568;
+            font-size: 16px;
+        }
+        @media (max-width: 650px) {
+            .calendar-content {
+                flex-direction: column;
+            }
+            .info-panel {
+                border-right: none;
+                border-bottom: 1px solid #eaeaea;
+            }
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#A67B5B">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body id="pocetna">
+
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-left">
+                <a href="#pocetna" class="logo-link">
+    <div class="logo">
+        <!-- Zamenjeno: Umesto dummy slike, koristimo ikonicu -->
+        <i class="fa-solid fa-scissors fa-2x" style="color: #A67B5B;"></i>
+        <span class="logo-title">Elegance</span>
+    </div>
+</a>
+            </div>
+            <div class="nav-center">
+                <ul>
+                    <li><a href="#akcije">Akcije</a></li>
+                    <li><a href="#usluge">Usluge</a></li>
+                    <li><a href="#cenovnik">Cenovnik</a></li>
+                    <li><a href="#galerija">Galerija</a></li>
+                    <li><a href="#o-nama">O Nama</a></li>
+                    <li><a href="#recenzije">Recenzije</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <button id="hamburger-meni">
+                <span class="linija"></span>
+                <span class="linija"></span>
+                <span class="linija"></span>
+            </button>
+            <div class="nav-right">
+                <a href="#pocetna" class="dugme dugme-header">Zakaži Termin</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Vaša Kosa, Naša Strast</h1>
+            <p class="hero-subtitle">Vrhunske frizerske usluge za vaš savršen izgled.</p>
+            <!-- NOVI KALENDAR ZA ZAKAZIVANJE -->
+            <div class="calendar-widget">
+                <div class="calendar-header">
+                    <h1>Zakaži Datum & Vreme</h1>
+                    <p>45-minutni sastanak sa Valentinom</p>
+                </div>
+                <div class="calendar-content">
+                    <div class="info-panel">
+                        <div class="organizer">
+                            <div class="avatar">VM</div>
+                            <div>
+                                <h3>Valentin Mihaljev</h3>
+                                <p>45-minutni sastanak</p>
+                            </div>
+                        </div>
+                        <div class="meeting-info">
+                            <div class="duration">
+                                <i class="fas fa-clock"></i>
+                                <span>45 min</span>
+                            </div>
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Beograd, Sončanska ulica 10</span>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="time-zone">
+                            <i class="fas fa-globe"></i>
+                            <span>Centralnoevropsko vreme (23:19)</span>
+                        </div>
+                    </div>
+                    <div class="booking-panel">
+                        <div class="month-nav">
+                            <button class="nav-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <h3 id="current-month">Avgust 2025</h3>
+                            <button class="nav-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <table class="calendar">
+                            <thead>
+                                <tr>
+                                    <th>PON</th>
+                                    <th>UTO</th>
+                                    <th>SRE</th>
+                                    <th>ČET</th>
+                                    <th>PET</th>
+                                    <th>SUB</th>
+                                    <th>NED</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendar-body">
+                                <!-- Calendar will be generated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <h3 id="selected-date">Petak, 29. Avgust</h3>
+                        <div class="time-slots">
+                            <div class="time-slot">11:30</div>
+                            <div class="time-slot">12:00</div>
+                            <div class="time-slot">12:30</div>
+                            <div class="time-slot">13:00</div>
+                            <div class="time-slot">13:30</div>
+                            <div class="time-slot">14:00</div>
+                            <div class="time-slot">14:30</div>
+                            <div class="time-slot">15:00</div>
+                            <div class="time-slot">15:30</div>
+                        </div>
+                        <button class="confirm-btn" id="confirm-btn" disabled>Potvrdi zakazivanje</button>
+                    </div>
+                </div>
+            </div>
+            <!-- KRAJ NOVOG KALENDARA -->
+            <div class="cancel-info" style="margin-top: 2rem;">
+                Ukoliko želite da otkažete Vaš termin, nazovite broj:<br><b>065/258-852</b>
+            </div>
+        </div>
+    </section>
+    
+    <section id="akcije">
+        <h2 class="section-title">Aktuelne Akcije i Popusti</h2>
+        <div class="akcije-container">
+            <div class="akcija-kartica">
+                <div class="akcija-ikonica"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3 class="akcija-naslov">Studentski Popust</h3>
+                <p class="akcija-opis">Svi studenti i đaci uz validan dokument ostvaruju 20% popusta na sve usluge šišanja i feniranja sredom i četvrtkom.</p>
+                <a href="#cenovnik" class="dugme-akcija">Pogledaj Cene</a>
+            </div>
+            <div class="akcija-kartica">
+                <div class="akcija-ikonica"><i class="fa-solid fa-gift"></i></div>
+                <h3 class="akcija-naslov">Paket za Dame</h3>
+                <p class="akcija-opis">Uživajte u kompletnom preobražaju! Paket uključuje farbanje, šišanje, feniranje i Olaplex tretman po specijalnoj ceni.</p>
+                <a href="#kontakt" class="dugme-akcija">Zakaži Odmah</a>
+            </div>
+            <div class="akcija-kartica">
+                <div class="akcija-ikonica"><i class="fa-solid fa-user-group"></i></div>
+                <h3 class="akcija-naslov">Dovedi Prijatelja</h3>
+                <p class="akcija-opis">Ako na termin dođete zajedno sa prijateljem/prijateljicom koji nije naš klijent, oboje dobijate 15% popusta na usluge.</p>
+                <a href="#kontakt" class="dugme-akcija">Zakaži za Dvoje</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="usluge">
+            <h2 class="section-title">Naše Usluge</h2>
+            <div class="usluge-container">
+                <div class="usluga-kartica">
+                    <picture>
+                        <source srcset="images/sisanje-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/sisanje-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/sisanje-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/sisanje-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/sisanje-800.jpg" alt="Šišanje" class="usluga-img" loading="lazy">
+                    </picture>
+                    <div class="usluga-info">
+                        <h4>Moderno Šišanje</h4>
+                        <p>Pratimo najnovije trendove kako bismo vam pružili frizuru koja ističe vaš stil.</p>
+                    </div>
+                </div>
+                <div class="usluga-kartica">
+                    <picture>
+                        <source srcset="images/farbanje-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/farbanje-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/farbanje-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/farbanje-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/farbanje-800.jpg" alt="Farbanje" class="usluga-img" loading="lazy">
+                    </picture>
+                    <div class="usluga-info">
+                        <h4>Profesionalno Farbanje</h4>
+                        <p>Koristimo premium boje koje neguju vašu kosu i daju joj neverovatan sjaj.</p>
+                    </div>
+                </div>
+                <div class="usluga-kartica">
+                    <picture>
+                        <source srcset="images/svecane-frizure-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/svecane-frizure-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/svecane-frizure-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/svecane-frizure-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/svecane-frizure-800.jpg" alt="Svečane frizure" class="usluga-img" loading="lazy">
+                    </picture>
+                    <div class="usluga-info">
+                        <h4>Svečane Frizure</h4>
+                        <p>Blistajte u posebnim prilikama uz elegantne i postojane frizure po vašoj želji.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cenovnik">
+            <h2 class="section-title">Naš Cenovnik</h2>
+            <div class="cenovnik-container">
+                <div class="cenovnik-kategorija">
+                    <h3>Žensko Šišanje</h3>
+                    <ul>
+                        <li><span>Šišanje i feniranje (kratka kosa)</span><span>2.500 RSD</span></li>
+                        <li><span>Šišanje i feniranje (srednja dužina)</span><span>3.000 RSD</span></li>
+                        <li><span>Šišanje i feniranje (duga kosa)</span><span>3.500 RSD</span></li>
+                        <li><span>Olaplex tretman</span><span>2.000 RSD</span></li>
+                    </ul>
+                </div>
+                <div class="cenovnik-kategorija">
+                    <h3>Kolorizacija</h3>
+                    <ul>
+                        <li><span>Farbanje korena</span><span>3.000 RSD</span></li>
+                        <li><span>Farbanje cele dužine</span><span>od 5.000 RSD</span></li>
+                        <li><span>Balayage / Ombre</span><span>od 9.000 RSD</span></li>
+                        <li><span>Preliv</span><span>2.500 RSD</span></li>
+                    </ul>
+                </div>
+                <div class="cenovnik-kategorija">
+                    <h3>Muško Šišanje</h3>
+                    <ul>
+                        <li><span>Klasično šišanje</span><span>1.200 RSD</span></li>
+                        <li><span>Moderno šišanje i stilizovanje</span><span>1.500 RSD</span></li>
+                        <li><span>Brijanje i uređenje brade</span><span>1.000 RSD</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="galerija">
+            <h2 class="section-title">Galerija Naših Radova</h2>
+            <div class="galerija-container">
+                <div class="galerija-item">
+                    <picture>
+                        <source srcset="images/frizura1-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/frizura1-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/frizura1-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/frizura1-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/frizura1-800.jpg" alt="Frizura 1" loading="lazy">
+                    </picture>
+                </div>
+                <div class="galerija-item">
+                    <picture>
+                        <source srcset="images/frizura2-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/frizura2-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/frizura2-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/frizura2-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/frizura2-800.jpg" alt="Frizura 2" loading="lazy">
+                    </picture>
+                </div>
+                <div class="galerija-item">
+                    <picture>
+                        <source srcset="images/frizura3-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/frizura3-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/frizura3-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/frizura3-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/frizura3-800.jpg" alt="Frizura 3" loading="lazy">
+                    </picture>
+                </div>
+                <div class="galerija-item">
+                    <picture>
+                        <source srcset="images/frizura4-800.webp" media="(min-width: 600px)" type="image/webp">
+                        <source srcset="images/frizura4-400.webp" media="(max-width: 599px)" type="image/webp">
+                        <source srcset="images/frizura4-800.jpg" media="(min-width: 600px)" type="image/jpeg">
+                        <source srcset="images/frizura4-400.jpg" media="(max-width: 599px)" type="image/jpeg">
+                        <img src="images/frizura4-800.jpg" alt="Frizura 4" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <section id="o-nama" class="about-section">
+            <h2 class="section-title">O Nama & Kako do Nas</h2>
+            <p>U srcu grada, Frizerski Salon "Elegance" je više od običnog salona – to je mesto gde se umetnost i stil spajaju. Naš tim stručnjaka posvećen je pružanju personalizovane usluge i stvaranju izgleda koji volite.</p>
+            <div class="map-container" style="margin-top: 3rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.631110058915!2d20.45722531553538!3d44.80882397909866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa9a7bab509%3A0x25b3951f28713dc!2sKnez%20Mihailova%20Street%2C%20Beograd!5e0!3m2!1sen!2srs?nopoweredby=1" width="100%" height="450" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
+        <section id="recenzije">
+            <h2 class="section-title">Šta Kažu Naši Klijenti</h2>
+            <div class="recenzije-container">
+                <div class="recenzija-kartica">
+                    <div class="zvezdice"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="recenzija-tekst">"Najprofesionalnija usluga u gradu! Uvek izađem prezadovoljna, a devojke su neverovatno ljubazne. Svaka preporuka!"</p>
+                    <p class="recenzija-autor">- Jelena M.</p>
+                </div>
+                <div class="recenzija-kartica">
+                    <div class="zvezdice"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="recenzija-tekst">"Došao sam na preporuku za muško šišanje i postao redovan klijent. Precizno, brzo i uvek odlična atmosfera."</p>
+                    <p class="recenzija-autor">- Marko J.</p>
+                </div>
+                <div class="recenzija-kartica">
+                    <div class="zvezdice"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <p class="recenzija-tekst">"Radila sam balayage i rezultati su premašili sva moja očekivanja. Boja je savršena, a kosa mi je zdrava i sjajna. Hvala!"</p>
+                    <p class="recenzija-autor">- Ana K.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <h2 class="section-title">Kontaktirajte Nas</h2>
+            <form id="kontakt-forma" action="https://formspree.io/f/mkgvonnb" method="POST">
+                <input type="text" name="ime" placeholder="Vaše Ime" required>
+                <input type="email" name="email" placeholder="Vaš Email" required>
+                <textarea name="poruka" placeholder="Vaša poruka ili pitanje..." required></textarea>
+                <!-- Ovo je obavezno za Formspree -->
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit" class="dugme">Pošalji Upit</button>
+            </form>
+        </section>
+    </main>
+    
+    <a href="#pocetna" class="idi-na-vrh">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutzerklärung</a>
+        </div>
+        <p>© 2025 Frizerski Salon "Elegance". Sva prava zadržana.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarBody = document.getElementById('calendar-body');
+            const currentMonthElement = document.getElementById('current-month');
+            const selectedDateElement = document.getElementById('selected-date');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const confirmBtn = document.getElementById('confirm-btn');
+            
+            let currentDate = new Date(2025, 7, 1); // August 2025
+            let selectedDate = new Date(2025, 7, 29); // August 29, 2025
+            let selectedTime = null;
+            
+            // Initialize calendar
+            renderCalendar();
+            updateSelectedDateDisplay();
+            
+            // Add event listeners for month navigation
+            prevMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+            
+            nextMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+            
+            // Time slot selection
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', () => {
+                    // Remove selection from previously selected time slot
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    
+                    // Mark new selected time
+                    slot.classList.add('selected');
+                    selectedTime = slot.textContent;
+                    
+                    updateConfirmButton();
+                });
+            });
+            
+            // Confirm button
+            confirmBtn.addEventListener('click', () => {
+                if (selectedDate && selectedTime) {
+                    const options = { weekday: 'long', day: 'numeric', month: 'long' };
+                    const dateString = selectedDate.toLocaleDateString('sr-RS', options);
+                    
+                    alert(`Uspešno ste zakazali sastanak!\nDatum: ${dateString}\nVreme: ${selectedTime}\nLokacija: Beograd, Sončanska ulica 10`);
+                }
+            });
+            
+            function renderCalendar() {
+                // Update month and year display
+                const monthNames = ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'];
+                currentMonthElement.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+                
+                // Clear previous calendar
+                calendarBody.innerHTML = '';
+                
+                // Get first day of month and number of days in month
+                const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+                const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+                
+                // Adjust for Monday as first day of week
+                let startDay = firstDay === 0 ? 6 : firstDay - 1;
+                
+                let date = 1;
+                for (let i = 0; i < 6; i++) {
+                    // Create a table row
+                    const row = document.createElement('tr');
+                    
+                    // Create individual cells for each day of the week
+                    for (let j = 0; j < 7; j++) {
+                        if (i === 0 && j < startDay) {
+                            // Empty cells before the first day of the month
+                            const cell = document.createElement('td');
+                            cell.classList.add('other-month');
+                            row.appendChild(cell);
+                        } else if (date > daysInMonth) {
+                            // Empty cells after the last day of the month
+                            const cell = document.createElement('td');
+                            cell.classList.add('other-month');
+                            row.appendChild(cell);
+                        } else {
+                            // Cells with dates
+                            const cell = document.createElement('td');
+                            cell.textContent = date;
+                            
+                            // Check if this cell represents the selected date
+                            if (currentDate.getMonth() === selectedDate.getMonth() && 
+                                currentDate.getFullYear() === selectedDate.getFullYear() && 
+                                date === selectedDate.getDate()) {
+                                cell.classList.add('selected');
+                            }
+                            
+                            // Check if this cell represents the current day
+                            if (currentDate.getMonth() === new Date().getMonth() && 
+                                currentDate.getFullYear() === new Date().getFullYear() && 
+                                date === new Date().getDate()) {
+                                cell.classList.add('current-day');
+                            }
+                            
+                            // Add click event to select date
+                            cell.addEventListener('click', () => {
+                                selectDate(date);
+                            });
+                            
+                            row.appendChild(cell);
+                            date++;
+                        }
+                    }
+                    
+                    // Append the row to the calendar body
+                    calendarBody.appendChild(row);
+                    
+                    // Stop making rows if we've run out of days
+                    if (date > daysInMonth) {
+                        break;
+                    }
+                }
+            }
+            
+            function selectDate(day) {
+                // Remove selection from previously selected date
+                const selectedCells = document.querySelectorAll('.calendar td.selected');
+                selectedCells.forEach(cell => cell.classList.remove('selected'));
+                
+                // Find the cell that was clicked and mark it as selected
+                const cells = document.querySelectorAll('.calendar td');
+                cells.forEach(cell => {
+                    if (cell.textContent == day) {
+                        cell.classList.add('selected');
+                    }
+                });
+                
+                // Update selected date
+                selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                updateSelectedDateDisplay();
+                updateConfirmButton();
+            }
+            
+            function updateSelectedDateDisplay() {
+                const options = { weekday: 'long', day: 'numeric', month: 'long' };
+                selectedDateElement.textContent = selectedDate.toLocaleDateString('sr-RS', options);
+            }
+            
+            function updateConfirmButton() {
+                if (selectedDate && selectedTime) {
+                    confirmBtn.disabled = false;
+                    const options = { day: 'numeric', month: 'long' };
+                    const dateString = selectedDate.toLocaleDateString('sr-RS', options);
+                    confirmBtn.textContent = `Zakaži za ${dateString} u ${selectedTime}`;
+                } else {
+                    confirmBtn.disabled = true;
+                    confirmBtn.textContent = 'Potvrdi zakazivanje';
+                }
+            }
+        });
+    </script>
+    <script src="script.js?v=2"></script>
+</body>
+</html>

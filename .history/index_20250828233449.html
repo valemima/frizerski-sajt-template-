@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakaži Sastanak - Valentin Mihaljev</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .left-panel {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background: white;
+            border-right: 1px solid #eaeaea;
+        }
+        
+        .right-panel {
+            flex: 1.5;
+            min-width: 400px;
+            padding: 30px;
+            background: #f9fafb;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        
+        h2 {
+            font-size: 20px;
+            margin: 25px 0 15px;
+            color: #4a5568;
+        }
+        
+        h3 {
+            font-size: 18px;
+            margin: 20px 0 15px;
+            color: #4a5568;
+        }
+        
+        .organizer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .meeting-info {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        
+        .duration {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+        }
+        
+        i {
+            margin-right: 10px;
+            color: #718096;
+        }
+        
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .calendar th {
+            padding: 12px;
+            text-align: center;
+            color: #718096;
+            font-weight: 600;
+        }
+        
+        .calendar td {
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        
+        .calendar td:hover {
+            background: #edf2f7;
+        }
+        
+        .selected {
+            background: #4299e1;
+            color: white;
+        }
+        
+        .selected:hover {
+            background: #3182ce !important;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .time-slot {
+            padding: 12px;
+            text-align: center;
+            background: #edf2f7;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .time-slot:hover {
+            background: #e2e8f0;
+        }
+        
+        .time-slot.selected {
+            background: #4299e1;
+            color: white;
+        }
+        
+        .time-zone {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 12px;
+            background: #edf2f7;
+            border-radius: 6px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #eaeaea;
+            margin: 25px 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-links a {
+            color: #718096;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: #4299e1;
+        }
+        
+        .confirm-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        
+        .confirm-btn:hover {
+            background: #3182ce;
+        }
+        
+        .confirm-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-panel {
+                border-right: none;
+                border-bottom: 1px solid #eaeaea;
+            }
+        }
+        
+        .other-month {
+            color: #cbd5e0;
+        }
+        
+        .current-day {
+            border: 2px solid #4299e1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Zakaži Datum & Vreme</h1>
+            
+            <div class="organizer">
+                <div class="avatar">VM</div>
+                <div>
+                    <h3>Valentin Mihaljev</h3>
+                    <p>45-minutni sastanak</p>
+                </div>
+            </div>
+            
+            <div class="meeting-info">
+                <div class="duration">
+                    <i class="fas fa-clock"></i>
+                    <span>45 min</span>
+                </div>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Beograd, Sončanska ulica 10</span>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-cookie-bite"></i> Podešavanja kolačića</a>
+                <a href="#"><i class="fas fa-flag"></i> Prijavi zloupotrebu</a>
+                <a href="#"><i class="fas fa-wrench"></i> Rešavanje problema</a>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <h2>Avgust 2025</h2>
+            
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th>PON</th>
+                        <th>UTO</th>
+                        <th>SRE</th>
+                        <th>ČET</th>
+                        <th>PET</th>
+                        <th>SUB</th>
+                        <th>NED</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="other-month"></td>
+                        <td class="other-month"></td>
+                        <td class="other-month"></td>
+                        <td class="other-month"></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td class="current-day">29</td>
+                        <td>30</td>
+                        <td>31</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="time-zone">
+                <i class="fas fa-globe"></i>
+                <span>Centralnoevropsko vreme (23:19)</span>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <h3>Petak, 29. Avgust</h3>
+            
+            <div class="time-slots">
+                <div class="time-slot">11:30</div>
+                <div class="time-slot">12:00</div>
+                <div class="time-slot">12:30</div>
+                <div class="time-slot">13:00</div>
+                <div class="time-slot">13:30</div>
+                <div class="time-slot">14:00</div>
+                <div class="time-slot">14:30</div>
+                <div class="time-slot">15:00</div>
+                <div class="time-slot">15:30</div>
+            </div>
+            
+            <button class="confirm-btn" disabled>Potvrdi zakazivanje</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarDays = document.querySelectorAll('.calendar td:not(.other-month)');
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const confirmBtn = document.querySelector('.confirm-btn');
+            
+            let selectedDate = null;
+            let selectedTime = null;
+            
+            // Odabir datuma
+            calendarDays.forEach(day => {
+                day.addEventListener('click', () => {
+                    // Ukloni selekciju sa prethodno odabranog datuma
+                    calendarDays.forEach(d => d.classList.remove('selected'));
+                    
+                    // Označi novi odabrani datum
+                    day.classList.add('selected');
+                    selectedDate = day.textContent;
+                    
+                    updateConfirmButton();
+                });
+            });
+            
+            // Odabir vremena
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', () => {
+                    // Ukloni selekciju sa prethodno odabranog vremena
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    
+                    // Označi novo odabrano vreme
+                    slot.classList.add('selected');
+                    selectedTime = slot.textContent;
+                    
+                    updateConfirmButton();
+                });
+            });
+            
+            // Funkcija za ažuriranje stanja dugmeta
+            function updateConfirmButton() {
+                if (selectedDate && selectedTime) {
+                    confirmBtn.disabled = false;
+                    confirmBtn.textContent = `Zakaži termin za ${selectedDate}. Avgust u ${selectedTime}`;
+                } else {
+                    confirmBtn.disabled = true;
+                    confirmBtn.textContent = 'Potvrdi zakazivanje';
+                }
+            }
+            
+            // Dodajemo funkcionalnost za dugme
+            confirmBtn.addEventListener('click', () => {
+                if (selectedDate && selectedTime) {
+                    alert(`Uspešno ste zakazali sastanak!\nDatum: ${selectedDate}. Avgust 2025.\nVreme: ${selectedTime}\nLokacija: Beograd, Sončanska ulica 10`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
