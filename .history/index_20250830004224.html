@@ -38,7 +38,38 @@
             font-size: 14px;
         }
     </style>
-    
+    <script>
+    // Funkcija za preusmeravanje sa popustom
+    function zakaziSaPopustom(popustKod, popustIznos, popustTip) {
+        localStorage.setItem('aktivniPopust', JSON.stringify({
+            kod: popustKod,
+            iznos: popustIznos,
+            tip: popustTip,
+            vreme: new Date().getTime()
+        }));
+        window.location.href = 'booking.html';
+    }
+
+    // Provera i prikaz notifikacije o popustu
+    document.addEventListener('DOMContentLoaded', function() {
+        const aktivniPopust = localStorage.getItem('aktivniPopust');
+        if (aktivniPopust) {
+            const popust = JSON.parse(aktivniPopust);
+            const istekloVreme = new Date().getTime() - popust.vreme > 24 * 60 * 60 * 1000;
+            if (!istekloVreme) {
+                const notifikacija = document.createElement('div');
+                notifikacija.className = 'popust-notifikacija';
+                notifikacija.innerHTML = `
+                    🎉 <strong>Popust aktiviran!</strong> ${popust.tip} od ${popust.iznos}% 
+                    <button onclick="this.parentElement.remove()">×</button>
+                `;
+                document.body.prepend(notifikacija);
+            } else {
+                localStorage.removeItem('aktivniPopust');
+            }
+        }
+    });
+    </script>
 </head>
 <body id="pocetna">
 
@@ -84,12 +115,9 @@
             <h1 class="hero-title">Vaša Kosa, Naša Strast</h1>
             <p class="hero-subtitle">Vrhunske frizerske usluge za vaš savršen izgled.</p>
             <div class="booking-box">
-                <h3>Zakažite termin i ostvarite popust!</h3>
-                <form id="popust-forma">
-                    <label for="email-popust">Unesite email za popust:</label>
-                    <input type="email" id="email-popust" name="email" placeholder="Vaš Email" required>
-                    <button type="submit" class="dugme">Zakaži Termin & Ostvari Popust</button>
-                </form>
+                <h3>Zakažite termin</h3>
+                <p style="margin-bottom: 20px;">Izaberite datum i vreme koji vam najviše odgovara</p>
+                <a href="booking.html" class="dugme" style="display: inline-block; text-decoration: none;">Otvoriti kalendar</a>
                 <div class="cancel-info">
                     Ukoliko želite da otkažete Vaš termin, nazovite broj:<br><b>065/258-852</b>
                 </div>

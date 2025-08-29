@@ -38,7 +38,38 @@
             font-size: 14px;
         }
     </style>
-    
+    <script>
+    // Funkcija za preusmeravanje sa popustom
+    function zakaziSaPopustom(popustKod, popustIznos, popustTip) {
+        localStorage.setItem('aktivniPopust', JSON.stringify({
+            kod: popustKod,
+            iznos: popustIznos,
+            tip: popustTip,
+            vreme: new Date().getTime()
+        }));
+        window.location.href = 'booking.html';
+    }
+
+    // Provera i prikaz notifikacije o popustu
+    document.addEventListener('DOMContentLoaded', function() {
+        const aktivniPopust = localStorage.getItem('aktivniPopust');
+        if (aktivniPopust) {
+            const popust = JSON.parse(aktivniPopust);
+            const istekloVreme = new Date().getTime() - popust.vreme > 24 * 60 * 60 * 1000;
+            if (!istekloVreme) {
+                const notifikacija = document.createElement('div');
+                notifikacija.className = 'popust-notifikacija';
+                notifikacija.innerHTML = `
+                    🎉 <strong>Popust aktiviran!</strong> ${popust.tip} od ${popust.iznos}% 
+                    <button onclick="this.parentElement.remove()">×</button>
+                `;
+                document.body.prepend(notifikacija);
+            } else {
+                localStorage.removeItem('aktivniPopust');
+            }
+        }
+    });
+    </script>
 </head>
 <body id="pocetna">
 

@@ -692,6 +692,7 @@ footer {
     to { transform: translateX(0); opacity: 1; }
 }
 
+
 /* ======================================================= */
 /* ===== RESPONSIVNI DEO (Finalna verzija) ===== */
 /* ======================================================= */
@@ -807,26 +808,23 @@ footer {
     }
 }
 
-/* Stilovi za popust formu */
-#popust-forma {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px; /* Ovo dodaje prostor između label, inputa i dugmeta */
-    margin-top: 20px;
-}
-
-#popust-forma label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
+/* Stil za email input da gurne dugme niže */
 #email-popust {
+    margin-top: px; /* Ovo gura input niže, a time i dugme */
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    width: 100%;
-    max-width: 300px;
     font-size: 1rem;
-    box-sizing: border-box;
+}
+
+/* Opciono: stil za label da bude malo boldiranija */
+#popust-forma label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
