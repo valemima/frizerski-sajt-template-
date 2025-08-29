@@ -71,16 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Email:', email, 'Popust:', popustTip);
                 
                 // Redirekt na Calendly sa emailom
-                const calendlyUrl = 'https://calendly.com/mihaljevvalentin/45-tica?email=' + encodeURIComponent(email);
-                window.open(calendlyUrl, '_blank');
+                let calendlyUrl = 'https://calendly.com/mihaljevvalentin/45-tica?email=' + encodeURIComponent(email);
                 
+                // Dodaj specificni popust ako postoji
+                if (popustTip) {
+                    calendlyUrl += '&popust=' + encodeURIComponent(popustTip);
+                }
+                
+                window.open(calendlyUrl, '_blank');
                 popustForma.reset();
                 localStorage.removeItem('popustTip');
-                
-                // Prikazi poruku za genericki popust
-                if (!popustTip) {
-                    alert('Hvala! Vaš popust od 10% će biti primenjen u salonu. Pokažite ovu poruku.');
-                }
             } else {
                 alert('Molimo unesite email.');
             }
@@ -97,14 +97,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const popustTip = urlParams.get('popust');
             
             if (popustTip) {
-                // Sačuvaj specifični popust
+                // Sačuvaj specifični popust i obriši generički ako postoji
                 localStorage.setItem('popustTip', popustTip);
+                localStorage.removeItem('generickiPopust');
                 
                 // Prikaži notifikaciju
                 prikaziPopustNotifikaciju(popustTip);
                 
                 // Otvori Calendly
-                window.open('https://calendly.com/mihaljevvalentin/45-tica', '_blank');
+                window.open(href, '_blank');
             }
         });
     });
@@ -121,16 +122,16 @@ document.addEventListener('DOMContentLoaded', function() {
         let poruka = '';
         switch(popustTip) {
             case 'studentski':
-                poruka = '🎓 Studentski popust od 20% je aktiviran! Pokažite studentski indeks u salonu.';
+                poruka = '🎓 Studentski popust od 20% je aktiviran!';
                 break;
             case 'dame':
-                poruka = '💅 Paket za dame sa popustom je aktiviran! Pokažite ovu poruku u salonu.';
+                poruka = '💅 Paket za dame sa popustom je aktiviran!';
                 break;
             case 'prijatelj':
-                poruka = '👥 Popust "Dovedi prijatelja" od 15% je aktiviran! Dođite sa prijateljem.';
+                poruka = '👥 Popust "Dovedi prijatelja" od 15% je aktiviran!';
                 break;
             default:
-                poruka = '🎉 Popust je aktiviran! Pokažite ovu poruku u salonu.';
+                poruka = '🎉 Popust je aktiviran!';
         }
         
         // Kreiraj i prikaži notifikaciju
